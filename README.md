@@ -44,6 +44,9 @@ SET is one of the four following evaluation sets (eval_set in orders):
 * "train": training data supplied to participants (~131k orders)
 * "test": test data reserved for machine learning competitions (~75k orders)
 
+In the 'orders' table, "train" and "test" identify the last order for every user, and are randomly split between train and test.
+They are "future data", but only on a per-user basis (e.g., the last order for user X might be earlier than the first order for user Y).
+
 ## Setup & Requirements
 
 ## Methodology
@@ -51,6 +54,7 @@ SET is one of the four following evaluation sets (eval_set in orders):
 * Exploratory data analysis (EDA)
 * Descriptive statistics
 * Time series analysis
+* Unsupervised ML: clustering
 
 ## Findings & Conclusions
 
