@@ -23,10 +23,10 @@ This anonymized dataset contains a sample of over 3 million grocery orders from 
 Most of the files and variable names should be self-explanatory.
 
 The dataset is a relational set of **7 files** describing customers' orders over time:
-* orders.csv
 * products.csv
 * aisles.csv
 * departments.csv
+* orders.csv
 * order_products__SET (see **SET** described below)
 
 #### Key data descriptions
@@ -82,7 +82,6 @@ Navigate to the desired notebook and you're ready to start your analysis!
 * ETL framework
 * Exploratory data analysis (EDA)
 * Descriptive statistics
-* Time series analysis
 * Unsupervised ML: clustering
 
 ## Project Structure
