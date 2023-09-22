@@ -48,6 +48,9 @@ SET is one of the four following evaluation sets (eval_set in orders):
 In the 'orders' table, "train" and "test" identify the last order for every user, and are randomly split between train and test.
 They are "future data", but only on a per-user basis (e.g., the last order for user X might be earlier than the first order for user Y).
 
+**NOTE**: This dataset includes orders from many different retailers and is **a heavily biased subset** of Instacart’s production data.
+And so it is not a representative sample of its products, users or their purchasing behavior.
+
 ## Setup & Requirements
 Follow these steps to get the data analysis project up and running on your local machine.
 
