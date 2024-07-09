@@ -4,16 +4,24 @@
 **Instacart** is the leading grocery technology company in North America, partnering with more than 1,400 national, regional, and local retail banners to deliver from more than 80,000 stores across more than 14,000 cities in North America.
 
 ## Project Description
-The primary objective of the project is to delve into the Instacart sales data and craft every conceivable insight that can contribute to the further business growth.
+The primary objective of the project is to delve into the Instacart sales data and find every conceivable insight that can contribute to the further business growth.
 
 **Main questions to answer:**
 - What shopper behaviour is at different hours of the day? days of the week?
 - How often and when are products from different department/aisle sold?
 - How many days pass before people place another order?
 - How many items do people buy?
-- Which items are the best sellers?
+- Which items are the best-sellers?
 - Which items are most frequently reordered?
 - Which items are added to the cart first? second? third?
+- What is a shopper profile?
+
+**Project goals:**
+1. Extract data from the data source.
+2. Load data to SQL database.
+3. Provide answers to the main business questions, using:
+   + (a) SQL queries, or
+   + (b) Jupyter notebook & Python code.
 
 ## Dataset Overview
 ### Source
@@ -82,7 +90,7 @@ With everything set up, start the Jupyter Notebook server: ``jupyter notebook``
 Navigate to the desired notebook and you're ready to start your analysis!
 
 ## Methodology
-* ETL framework
+* Data pipeline
 * Exploratory data analysis (EDA)
 * Descriptive statistics
 * Unsupervised ML: clustering
