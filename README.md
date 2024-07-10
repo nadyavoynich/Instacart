@@ -4,8 +4,9 @@
 **Instacart** is the leading grocery technology company in North America, partnering with more than 1,400 national, regional, and local retail banners to deliver from more than 80,000 stores across more than 14,000 cities in North America.
 
 ## Project Description
-The primary objective of the project is to delve into the Instacart sales data and find every conceivable insight that can contribute to the further business growth.
-
+The primary aim of the project is to uncover patterns in the purchasing habits of Instacart's shoppers based on their 
+and find every conceivable insight that can contribute to the further business growth.
+  
 **Main questions to answer:**
 - What shopper behaviour is at different hours of the day? days of the week?
 - How often and when are products from different department/aisle sold?
@@ -90,31 +91,32 @@ With everything set up, start the Jupyter Notebook server: ``jupyter notebook``
 Navigate to the desired notebook and you're ready to start your analysis!
 
 ## Methodology
-* Data pipeline
+* ELT pipeline
 * Exploratory data analysis (EDA)
 * Descriptive statistics
 * Unsupervised ML: clustering
 
 ## Project Structure
 This repository contains all the necessary code and scripts for performing a detailed basket analysis on shopper data.
-The primary aim is to uncover patterns in the purchasing habits of shoppers.
 Below is a comprehensive breakdown of the project structure to guide you through its various components.
 
 ### Directory Structure & Components
-### 1. `scripts/`
-- `create_db.py`: Python script that sets up the necessary SQL database schema. Run this script first if you're setting up the database from scratch.
-- `load_csv_to_db.py`: A utility script that uploads the dataset from the `data/` folder to the SQL database. Useful for initial data loading.
-
-### 2. `notebooks/`
-- `instacart-market-basket-analysis.ipynb`: The main Jupyter notebook where the comprehensive data analysis is performed.
-This notebook leverages data both from the SQL database and local `data/` folder for optimal performance.
-- `preliminary-data-exploration.ipynb`: A notebook used during the initial phases of the project.
-It's designed to help understand the dataset's nature, its structure, and the relationships between different files.
-
-### 3. `data/`
+### 1. `data/`
 This directory contains raw dataset files.
-Some of the analysis in the main notebook, `instacart-market-basket-analysis.ipynb`, directly loads data from this 
-folder instead of the SQL connection to expedite the analysis process.
+
+### 2. Scripts
+- `create_db.py`: Python script that sets up the necessary SQL database schema. Run this script first if you're setting 
+up the database from scratch.
+- `load_csv_to_db.py`: A utility script that uploads the dataset from the `data/` folder to the SQL database. 
+Useful for initial data loading.
+
+### 3. Notebooks
+- `Instacart_prelim_eda.ipynb`: A notebook used during the initial phases of the project.
+It's designed to help understand the dataset's nature, its structure, and the relationships between different files.
+- `Instacart_eda.ipynb`: The main Jupyter notebook where the comprehensive data analysis is performed.
+N.B.: This notebook leverages data both from the SQL database and local `data/` folder for optimal performance.
+
+### 3. SQL queries for data 
 
 ### Getting Started
 1. **Database Setup**:
@@ -125,7 +127,6 @@ folder instead of the SQL connection to expedite the analysis process.
 3. **Instacart Market Basket Analysis**:
     - Dive deep into the `instacart-market-basket-analysis.ipynb` notebook for a thorough exploration and insights related to shoppers' basket analysis.
 
-I hope this structure provides clarity and facilitates ease of navigation.
 
 ## Findings & Conclusions
 TBD
