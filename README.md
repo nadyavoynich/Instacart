@@ -101,6 +101,7 @@ This repository contains all the necessary code and scripts for performing a det
 Below is a comprehensive breakdown of the project structure to guide you through its various components.
 
 ### Directory Structure & Components
+![Instacart mobile app screens](Instacart_directory_structure.png)
 ### 1. `data/`
 This directory contains raw dataset files.
 
@@ -109,6 +110,7 @@ This directory contains raw dataset files.
 up the database from scratch.
 - `load_csv_to_db.py`: A utility script that uploads the dataset from the `data/` folder to the SQL database. 
 Useful for initial data loading.
+- `Instacart_eda.sql`: SQL script that contains quiries for exploratory data analysis (answers the same questions as in the `Instacart_eda.ipynb`).
 
 ### 3. Notebooks
 - `Instacart_prelim_eda.ipynb`: A notebook used during the initial phases of the project.
@@ -116,7 +118,6 @@ It's designed to help understand the dataset's nature, its structure, and the re
 - `Instacart_eda.ipynb`: The main Jupyter notebook where the comprehensive data analysis is performed.
 N.B.: This notebook leverages data both from the SQL database and local `data/` folder for optimal performance.
 
-### 3. SQL queries for data 
 
 ### Getting Started
 1. **Database Setup**:
