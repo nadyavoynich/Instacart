@@ -1,5 +1,5 @@
 # Unpacking Instacart: A Deep Dive into North American Grocery E-Commerce Behavior
-![Instacart mobile app screens](Instacart.png)
+![Instacart mobile app screens](images/Instacart.png)
 
 **Instacart** is the leading grocery technology company in North America, partnering with more than 1,400 national, regional, and local retail banners to deliver from more than 80,000 stores across more than 14,000 cities in North America.
 
@@ -101,7 +101,7 @@ This repository contains all the necessary code and scripts for performing a det
 Below is a comprehensive breakdown of the project structure to guide you through its various components.
 
 ### Directory Structure & Components
-![Instacart mobile app screens](Instacart_directory_structure.png)
+![Instacart mobile app screens](images/Instacart_directory_structure.png)
 ### 1. `data/`
 This directory contains raw dataset files.
 
@@ -130,4 +130,40 @@ N.B.: This notebook leverages data both from the SQL database and local `data/` 
 
 
 ## Findings & Conclusions
-TBD
+
+**Peak Ordering Times:** The majority of grocery orders are placed between 8:00 and 19:00, with the highest volume occurring between 10:00 and 16:00. 
+There is no distinct rush hour, reflecting natural daytime shopping patterns.
+
+**Weekly Shopping Trends:** Users show increased activity from Sunday afternoon to Monday afternoon, likely stocking up after the weekend. 
+Days 0 (Sunday) and 1 (Monday) are the most popular for shopping, while Saturday sees fewer orders due to potential housekeeping and outdoor activities.
+
+**Stable Midweek Ordering:** From Tuesday to Friday, order volumes remain stable between 9:00 and 16:00, with a slight dip around lunchtime, likely due to lunch breaks.
+
+**Order Size:** The median number of products per order is 8, with 75% of orders containing fewer than 14 products. Typical orders have up to 27 products, while orders with 28 to 145 products are considered atypical.
+
+**Re-order Frequency:** Users typically reorder every 7 days, with a maximum interval of 30 days. The minimum re-order interval is often skewed by NaN values, but subsequent data suggest a minimum of 1 day.
+
+**Re-order Patterns:**
+
+* **Initial Orders:** Average 10 products, with a maximum of 17.
+* **Re-orders within 6 Days:** Average 9 to 14 products, with a maximum of 27. 
+* **Re-orders after 7 Days:** Average 15 products, with a maximum of 30.
+
+**Popular Re-ordered Products:** Fresh fruits, vegetables, milk, and water are frequently reordered. Items like yogurt, soy lactose-free products, bread, eggs, and cheese have high re-order frequencies but are purchased in smaller quantities.
+
+**Fruits vs. Vegetables:** Fruits are reordered more frequently than vegetables due to their shorter shelf life, versatility in consumption, and consumer preferences. In contrast, spices, seasonings, and baking ingredients are least likely to be reordered.
+
+**Top-Selling and Re-ordered Products:** The top-selling products are fresh fruits, vegetables, and organic whole milk, reflecting health-conscious customers. 
+Bananas are the top-selling product, followed by strawberries, avocados, spinach, and lemons. These items are also the most frequently re-ordered, indicating their status as staples.
+
+**Product Tiers:**
+
+* Tier 1: Highly likely to be purchased items like bananas, strawberries, avocados, spinach, whole milk, raspberries, lemons, and limes. 
+* Tier 2: Frequently ordered products such as Fuji apples, cucumbers, blueberries, yellow onions, and half & half. 
+* Tier 3: Products with fewer orders, including soda, reduced-fat milk, Hass avocados, garlic, and Honeycrisp apples.
+
+#### Recommendations:
+
+* **Stock Management:** Ensure the consistent availability of top-selling and frequently re-ordered products to maintain customer satisfaction and a smooth supply chain. 
+* **Prominent Display:** Prioritize displaying these essential products prominently when users log in or visit the site. 
+* **Promotional Strategies:** Offer bundle deals and recommend related products to increase the average order value.
