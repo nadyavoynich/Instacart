@@ -1,4 +1,4 @@
-# Unpacking Instacart: A Deep Dive into North American Grocery E-Commerce Behavior
+# Unpacking Instacart: A Deep Dive into North American Grocery E-Commerce Behaviour
 ![Instacart mobile app screens](images/Instacart.png)
 
 **Instacart** is the leading grocery technology company in North America, partnering with more than 1,400 national, regional, and local retail banners to deliver from more than 80,000 stores across more than 14,000 cities in North America.
