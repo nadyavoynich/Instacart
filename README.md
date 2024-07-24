@@ -4,18 +4,18 @@
 **Instacart** is the leading grocery technology company in North America, partnering with more than 1,400 national, regional, and local retail banners to deliver from more than 80,000 stores across more than 14,000 cities in North America.
 
 ## Project Description
-The primary aim of the project is to uncover patterns in the purchasing habits of Instacart's shoppers based on their 
-and find every conceivable insight that can contribute to the further business growth.
-  
+The key objective of the project is to uncover patterns in the purchasing habits of Instacart shoppers and
+provide recommendations based on the average shopper profile.
+
 **Main questions to answer:**
-- What shopper behaviour is at different hours of the day? days of the week?
-- How often and when are products from different department/aisle sold?
-- How many days pass before people place another order?
+- What shopper behaviour is at different hours of the day, different days of the week?
 - How many items do people buy?
-- Which items are the best-sellers?
+- How many days pass before people place another order?
+- How many items do people buy since a previous order?
+- Which items are the best-sellers? 
 - Which items are most frequently reordered?
 - Which items are added to the cart first? second? third?
-- What is a shopper profile?
+- How often and when are products from different department/aisle sold?
 
 **Project goals:**
 1. Extract data from the data source.
@@ -131,67 +131,75 @@ N.B.: This notebook leverages data both from the SQL database and local `data/` 
 
 ## Findings & Conclusions
 
-**Peak Ordering Times:** The majority of grocery orders are placed between 8:00 and 19:00, with the highest volume occurring between 10:00 and 16:00. 
-There is no distinct rush hour, reflecting natural daytime shopping patterns.
+### Average Shopper Profile for Instacart
 
-**Weekly Shopping Trends:** Users show increased activity from Sunday afternoon to Monday afternoon, likely stocking up after the weekend. 
-Days 0 (Sunday) and 1 (Monday) are the most popular for shopping, while Saturday sees fewer orders due to potential housekeeping and outdoor activities.
+**Order Frequency and Timing:**
+- The average Instacart user places orders approximately once a week, with a median interval of 7 days between orders.
+- Peak shopping hours are from 10:00 to 16:00, with a majority of orders being placed between 8:00 and 19:00.
+- Sundays and Mondays are the most popular shopping days, especially from Sunday afternoon to Monday afternoon.
 
-**Stable Midweek Ordering:** From Tuesday to Friday, order volumes remain stable between 9:00 and 16:00, with a slight dip around lunchtime, likely due to lunch breaks.
+**Order Size and Frequency:**
+- Each user places between 4 and 100 orders in total, with each order containing an average of 8 products.
+- Typical orders consist of 1 to 27 products, with outliers ranging from 28 to 145 products per order.
+- Initial orders usually contain around 10 products, with the maximum being 17 products.
 
-**Order Size:** The median number of products per order is 8, with 75% of orders containing fewer than 14 products. Typical orders have up to 27 products, while orders with 28 to 145 products are considered atypical.
+**Re-ordering Patterns:**
+- Regular users order groceries more frequently, sometimes multiple times a week, while occasional users order less frequently (once every two weeks or once a month).
+- For re-orders:
+    - Within 6 days: average purchase of 9 to 14 products.
+    - 7 days or more: average purchase increases to 15 products.
 
-**Re-order Frequency:** Users typically reorder every 7 days, with a maximum interval of 30 days. The minimum re-order interval is often skewed by NaN values, but subsequent data suggest a minimum of 1 day.
+#### Shopping Preferences
+**Product Types:**
+- Fresh fruits and vegetables are the top-selling and most frequently reordered items, with bananas, strawberries, avocados, and spinach being the most popular.
+- Users prioritize health-conscious choices, with organic whole milk also being a best-seller.
+- Bread, dairy products, and non-perishable items are not as frequently reordered.
 
-**Re-order Patterns:**
+**Aisles and Departments:**
+- The most frequently visited aisles are those dedicated to fresh produce and dairy & eggs.
+- Popular aisles also include bread, lunch meat, baby food formula, cereal, and soup broth bouillon.
+- Major departments include snacks, beverages, frozen foods, and pantry goods.
 
-* **Initial Orders:** Average 10 products, with a maximum of 17.
-* **Re-orders within 6 Days:** Average 9 to 14 products, with a maximum of 27. 
-* **Re-orders after 7 Days:** Average 15 products, with a maximum of 30.
+**Initial and Subsequent Purchases:**
+- Users often start their shopping with essential items like bananas, strawberries, avocados, spinach, whole milk, raspberries, lemons, and limes.
+- Secondary additions to the cart include Fuji apples, cucumber kirbi, blueberries, yellow onions, and half & half.
+- Products like soda, reduced-fat milk, Hass avocados, garlic, and honeycrisp apples are added later in the shopping process.
 
-**Popular Re-ordered Products:** Fresh fruits, vegetables, milk, and water are frequently reordered. Items like yogurt, soy lactose-free products, bread, eggs, and cheese have high re-order frequencies but are purchased in smaller quantities.
+#### Shopping Behavior
 
-**Fruits vs. Vegetables:** Fruits are reordered more frequently than vegetables due to their shorter shelf life, versatility in consumption, and consumer preferences. In contrast, spices, seasonings, and baking ingredients are least likely to be reordered.
+**Day of the Week Trends:**
+- Higher activity from Sunday afternoon to Monday afternoon, likely due to restocking after the weekend.
+- Stable order volumes from Tuesday to Friday between 9:00 and 16:00, with a slight dip around lunchtime.
+- Lower order volume on Saturdays, potentially due to household activities and outdoor engagements.
 
-**Top-Selling and Re-ordered Products:** The top-selling products are fresh fruits, vegetables, and organic whole milk, reflecting health-conscious customers. 
-Bananas are the top-selling product, followed by strawberries, avocados, spinach, and lemons. These items are also the most frequently re-ordered, indicating their status as staples.
+**Item Quantity and Order Trends:**
+- For initial orders, users purchase an average of 10 products.
+- For re-orders within short intervals (less than 6 days), users buy 9 to 14 products.
+- For re-orders after longer intervals (7 days or more), users buy 15 to 30 products. 
 
-**Product Tiers:**
+**Re-ordering Frequency by Product Type:**
+- Fresh fruits are reordered more frequently than vegetables, likely due to shorter shelf life and versatile consumption options.
+- High-reordering frequency for yogurt, soy/lactose-free products, bread, refrigerated items, eggs, and cheese, but in smaller quantities.
+- Least likely to reorder: spices, seasonings, condiments, and baking ingredients.
 
-* Tier 1: Highly likely to be purchased items like bananas, strawberries, avocados, spinach, whole milk, raspberries, lemons, and limes. 
-* Tier 2: Frequently ordered products such as Fuji apples, cucumbers, blueberries, yellow onions, and half & half. 
-* Tier 3: Products with fewer orders, including soda, reduced-fat milk, Hass avocados, garlic, and Honeycrisp apples.
+## Recommendations
+- Prioritize displaying these essential products prominently when users log in or visit the site. 
+- Offer bundle deals and recommend related products to increase the average order value.
 
-**Top Departments Dominance:** The produce department and dairy eggs department collectively account for nearly 46% of all orders, making them the top-priority departments with the best-selling and frequently reordered products.
+#### Inventory management:
+  * Ensure the consistent availability of top-selling and frequently re-ordered products to maintain customer satisfaction and a smooth supply chain. 
+  * Ensure continuous availability and optimal stock levels for produce and dairy eggs, as these departments account for nearly 46% of orders. Regularly monitor inventory to prevent stockouts of high-demand items. 
+  * Prioritize restocking and expanding popular aisles within the produce and dairy eggs departments. Consider increasing the variety of fresh fruits, vegetables, and dairy products to meet customer demand.
 
-**Sales Concentration:** Together with snacks, beverages, frozen, and pantry goods (Group 2), these departments generate 76% of all sales. 
-This highlights the importance of focusing on these categories for further investigation and optimization.
+#### Enhance Product Visibility:
+  - Highlight products from top departments (produce and dairy eggs) on the homepage and in marketing campaigns to drive sales. Utilize advertising banners and product recommendations to promote these items.
+  - Create dedicated sections on the platform for popular aisles from smaller or niche departments (e.g., bakery, deli, breakfast) to increase their visibility and encourage purchases. 
 
-**Aisle Insights:** The most common aisles belong to produce and dairy eggs, while certain smaller or niche departments like bakery, deli, and breakfast also feature popular aisles. 
-The pantry department is more fragmented, with less frequently purchased items like baking ingredients and seasonings.
+#### Targeted Marketing and Promotions:
+  * Offer bundle deals and discounts on frequently reordered items to increase average order value. For example, create bundles that include staple items like bananas, strawberries, and spinach with complementary products.
+  * Implement loyalty programs or subscription services for high-demand categories (e.g., produce and dairy) to encourage repeat purchases and improve customer retention. 
+  * Develop targeted marketing campaigns for different customer segments based on their purchasing behavior. For example, promote health-focused products to health-conscious customers and convenience items to busy professionals.
 
-### Recommendations:
-
-**Prominent Display:** Prioritize displaying these essential products prominently when users log in or visit the site. 
-
-**Promotional Strategies:** Offer bundle deals and recommend related products to increase the average order value.
-
-**Inventory Management:**
-* **Stock Management:** Ensure the consistent availability of top-selling and frequently re-ordered products to maintain customer satisfaction and a smooth supply chain. 
-* **Focus on Top Departments:** Ensure continuous availability and optimal stock levels for produce and dairy eggs, as these departments account for nearly 46% of orders. Regularly monitor inventory to prevent stockouts of high-demand items. 
-* **Expand High-Performing Aisles:** Prioritize restocking and expanding popular aisles within the produce and dairy eggs departments. Consider increasing the variety of fresh fruits, vegetables, and dairy products to meet customer demand.
-
-**Enhance Product Visibility:**
-* **Promote High-Sales Departments:** Highlight products from top departments (produce and dairy eggs) on the homepage and in marketing campaigns to drive sales. Utilize advertising banners and product recommendations to promote these items. 
-* **Feature Popular Aisles:** Create dedicated sections on the platform for popular aisles from smaller or niche departments (e.g., bakery, deli, breakfast) to increase their visibility and encourage purchases.
-
-**Targeted Marketing and Promotions:**
-* **Bundle Deals:** Offer bundle deals and discounts on frequently reordered items to increase average order value. For example, create bundles that include staple items like bananas, strawberries, and spinach with complementary products.
-* **Customer Retention Strategies:** Implement loyalty programs or subscription services for high-demand categories (e.g., produce and dairy) to encourage repeat purchases and improve customer retention.
-
-**Segmented Marketing Campaigns:** Develop targeted marketing campaigns for different customer segments based on their purchasing behavior. 
-For example, promote health-focused products to health-conscious customers and convenience items to busy professionals.
-
-**Improve Pantry Department Offerings:**
-* **Streamline Product Range:** Evaluate the extensive selection of pantry items and identify low-performing products. Focus on stocking high-demand items and consolidating less popular ones to streamline the inventory.
-* **Enhance Product Information:** Provide detailed product descriptions, usage tips, and recipe ideas for pantry items to increase their appeal and drive sales. Highlight the versatility and benefits of these products to attract more customers.
+#### Improve Pantry Department Offerings:
+  - Evaluate the extensive selection of pantry items and identify low-performing products. Focus on stocking high-demand items and consolidating less popular ones to streamline the inventory. 
+  - Provide detailed product descriptions, usage tips, and recipe ideas for pantry items to increase their appeal and drive sales. Highlight the versatility and benefits of these products to attract more customers.
