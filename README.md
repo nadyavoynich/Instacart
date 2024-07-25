@@ -5,12 +5,12 @@
 
 ## Project Description
 The key objective of the project is to uncover patterns in the purchasing habits of Instacart shoppers and
-provide recommendations based on the average shopper profile.
+provide recommendations based on the average shopper's behaviour.
 
 **Main questions to answer:**
-- What shopper behaviour is at different hours of the day, different days of the week?
+- How many orders are made at different hours of the day, different days of the week?
 - How many items do people buy?
-- How many days pass before people place another order?
+- After how many days do people order again?
 - How many items do people buy since a previous order?
 - Which items are the best-sellers? 
 - Which items are most frequently reordered?
@@ -29,32 +29,32 @@ provide recommendations based on the average shopper profile.
 “The Instacart Online Grocery Shopping Dataset 2017”, accessed from https://www.kaggle.com/competitions/instacart-market-basket-analysis/data.
 ### Dataset structure
 This anonymized dataset contains a sample of over 3 million grocery orders from more than 200,000 Instacart users.
-Most of the files and variable names should be self-explanatory.
+Most of the files and variable names are self-explanatory.
 
-The dataset is a relational set of **7 files** describing customers' orders over time:
+The dataset is a relational set of 7 files describing customers' orders over time:
 * products.csv
 * aisles.csv
 * departments.csv
 * orders.csv
-* order_products__SET (see **SET** described below)
+* order_products__SET.csv (see **SET** described below)
 
-#### Key data descriptions
-* order_id: order identifier
-* user_id: customer identifier
-* eval_set: which evaluation set this order belongs in (see **SET** described below)
-* order_number: the order sequence number for this user (1 = first, n = nth)
-* order_dow: the day of the week the order was placed on
-* order_hour_of_day: the hour of the day the order was placed on
-* days_since_prior: days since the last order, capped at 30 (with NAs for order_number = 1)
-* add_to_cart_order: order in which each product was added to cart 
-* reordered: 1 if this product has been ordered by this user in the past, 0 otherwise
-
-SET is one of the four following evaluation sets (eval_set in orders):
+**SET** is one of the four following evaluation sets (eval_set in orders):
 * "prior": orders prior to that users most recent order (~3.2m orders)
 * "train": training data supplied to participants (~131k orders)
 * "test": test data reserved for machine learning competitions (~75k orders)
 
-In the 'orders' table, "train" and "test" identify the last order for every user, and are randomly split between train and test.
+#### Key data descriptions
+* `order_id`: order identifier
+* `user_id`: customer identifier
+* `eval_set`: which evaluation set this order belongs in (see **SET** described below)
+* `order_number`: the order sequence number for this user (1 = first, n = nth)
+* `order_dow`: the day of the week the order was placed on
+* `order_hour_of_day`: the hour of the day the order was placed on
+* `days_since_prior`: days since the last order, capped at 30 (with NAs for order_number = 1)
+* `add_to_cart_order`: order in which each product was added to cart 
+* `reordered`: 1 if this product has been ordered by this user in the past, 0 otherwise
+
+In the `orders` table, "train" and "test" identify the last order for every user, and are randomly split between train and test.
 They are "future data", but only on a per-user basis (e.g., the last order for user X might be earlier than the first order for user Y).
 
 **NOTE**: This dataset includes orders from many different retailers and is **a heavily biased subset** of Instacart’s production data.
@@ -88,7 +88,7 @@ This project uses the `The Instacart Online Grocery Shopping Dataset 2017` datas
 
 ### Running the Notebook
 With everything set up, start the Jupyter Notebook server: ``jupyter notebook``
-Navigate to the desired notebook and you're ready to start your analysis!
+Navigate to the desired notebook and you're ready to start your analysis.
 
 ## Methodology
 * ELT pipeline
