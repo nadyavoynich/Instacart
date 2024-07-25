@@ -12,7 +12,7 @@ provide recommendations based on the average shopper's behaviour.
 - How many items do people buy?
 - After how many days do people order again?
 - How many items do people buy since a previous order?
-- Which items are the best-sellers? 
+- Which items are the bestsellers? 
 - Which items are most frequently reordered?
 - Which items are added to the cart first? second? third?
 - How often and when are products from different department/aisle sold?
@@ -131,56 +131,95 @@ N.B.: This notebook leverages data both from the SQL database and local `data/` 
 
 ## Findings & Conclusions
 
-### Average Shopper Profile for Instacart
+### Q.1: How many orders are made at different hours of the day, different days of the week?
+* Most orders are placed between 8:00 and 19:00, peaking from 10:00 to 16:00. 
+* Sunday and Monday are the most popular days for online grocery shopping. 
+* Higher activity from Sunday afternoon to Monday afternoon, likely for stocking up after the weekend. 
+* Order volumes are stable from Tuesday to Friday between 9:00 and 16:00, with a slight lunchtime dip. 
+* Fewer orders on Saturday, possibly due to other activities like housekeeping or outdoor pursuits.
 
-**Order Frequency and Timing:**
-- The average Instacart user places orders approximately once a week, with a median interval of 7 days between orders.
-- Peak shopping hours are from 10:00 to 16:00, with a majority of orders being placed between 8:00 and 19:00.
-- Sundays and Mondays are the most popular shopping days, especially from Sunday afternoon to Monday afternoon.
+### Q.2: How many items do people buy?
+* Users bought over 33.8 million products on the platform.
+  * NOTE: Data is available for 3,346,083 orders (97.8% of total), excluding 75,000 orders with missing content.
+* Average purchase is 8 products bought per order (median).
+* Typical orders contain 1 to 27 products, while outlier orders (3.3%) consist of 28 to 145 products.
 
-**Order Size and Frequency:**
-- Each user places between 4 and 100 orders in total, with each order containing an average of 8 products.
-- Typical orders consist of 1 to 27 products, with outliers ranging from 28 to 145 products per order.
-- Initial orders usually contain around 10 products, with the maximum being 17 products.
+### Q.3: How many days pass before people place another order?
+* On average, people order groceries online approximately once a week. The same applies to Instacart users: they order again in 7 days (median).
+* Initial orders constitute 6.4% of the total orders.
 
-**Re-ordering Patterns:**
-- Regular users order groceries more frequently, sometimes multiple times a week, while occasional users order less frequently (once every two weeks or once a month).
-- For re-orders:
-    - Within 6 days: average purchase of 9 to 14 products.
-    - 7 days or more: average purchase increases to 15 products.
+### Q.4: How many items do people buy since a previous order?
+* **Initial Orders:** Users typically purchase an average of 10 products, 
+indicating users are trying out the service or making smaller, essential purchases.
+* **Reordering:**
+  * **Minimum Purchase:** Regardless of the interval since the last order, users always buy at least 1 product, showing a consistent need to restock.
+  * **Short interval** (when re-ordering within 6 days of a previous order):
+    * **Average purchase:** ranges from 9 to 14
+    * **Maximum purchase:** ranges from 17 to 27
+  * **Longer interval** (if there is a gap of 7 days or more since the last order):
+    * **Average purchase:** increases to 15 
+    * **Maximum purchase:** increases to between 27 and 30
+* Short intervals between orders lead to smaller, frequent purchases, while longer intervals result in larger, planned restocks. Promotions and reminders for periodic restocks can optimize delivery loads and encourage bulk buying.
 
-#### Shopping Preferences
-**Product Types:**
-- Fresh fruits and vegetables are the top-selling and most frequently reordered items, with bananas, strawberries, avocados, and spinach being the most popular.
-- Users prioritize health-conscious choices, with organic whole milk also being a best-seller.
-- Bread, dairy products, and non-perishable items are not as frequently reordered.
+### Q.5: Which items are the bestsellers?
+* **Fresh fruits, vegetables, and organic whole milk dominate the bestsellers list**, highlighting users' preference for health-conscious choices. 
+* **Bananas** are the top-selling item on the platform. Strawberries, avocados, spinach, and lemons follow closely behind bananas. 
+* Bread and other dairy products are not among the top sellers, despite expectations. 
+* The prominence of certain items like bananas, avocados, and spinach may be driven by advertising banners or product recommendations on the platform.
 
-**Aisles and Departments:**
-- The most frequently visited aisles are those dedicated to fresh produce and dairy & eggs.
-- Popular aisles also include bread, lunch meat, baby food formula, cereal, and soup broth bouillon.
-- Major departments include snacks, beverages, frozen foods, and pantry goods.
+### Q.6: Which items are most frequently reordered?
+* The most frequently reordered items are **similar to the bestsellers list**, indicating that popular products are often reordered. 
+  * Bananas top the chart for most frequently reordered items.
+  * Other frequently reordered items include strawberries, avocados, and spinach, similar to their order in the bestsellers list. 
+  * These products are likely considered essential or staple items for many Instacart shoppers.
+* Aisles with high reorder frequency:
+  * Fresh fruits and vegetables, milk, and water are consistently at the top.
+  * Other high-reorder frequency items include yogurt, soy/lactose-free products, bread, refrigerated items, eggs, and cheese.
+* Fresh fruits are reordered more frequently than vegetables, possibly due to shorter shelf life, versatile consumption forms, and taste preferences.
+* Items like spices, seasonings, condiments, and baking ingredients are less frequently reordered, likely because they are used in smaller quantities.
 
-**Initial and Subsequent Purchases:**
-- Users often start their shopping with essential items like bananas, strawberries, avocados, spinach, whole milk, raspberries, lemons, and limes.
-- Secondary additions to the cart include Fuji apples, cucumber kirbi, blueberries, yellow onions, and half & half.
-- Products like soda, reduced-fat milk, Hass avocados, garlic, and honeycrisp apples are added later in the shopping process.
+### Q.7: Which items are added to the cart first, second, and third?
 
-#### Shopping Behavior
+The sequence of product additions shed light on how customers typically navigate the store.
+Shoppers tend to add these essentials first before moving on to other items.
+Based on the ordering sequence of bestsellers, three product groups can be distinguished:
+* **Group 1: First to Third Additions**
+  * These items are highly likely to be purchased and are often the first, second, or third items added to the cart.
+  * Includes: Bananas, strawberries, avocados, spinach, whole milk, raspberries, lemons, and limes.
+* **Group 2: Second and Third Additions**
+  * These products are frequently added second or third, sometimes first. 
+  * Includes: Fuji apples, cucumber kirbi, blueberries, yellow onion, half & half, and raspberries.
+* **Group 3: Comparable but Fewer Units Sold:**
+  * These items have fewer units sold compared to Groups 1 and 2 but are still significant.
+  * Includes: Soda, reduced fat milk, Hass avocados, garlic, and honeycrisp apples.
+* Most products in these groups align closely with the most frequently reordered items.
 
-**Day of the Week Trends:**
-- Higher activity from Sunday afternoon to Monday afternoon, likely due to restocking after the weekend.
-- Stable order volumes from Tuesday to Friday between 9:00 and 16:00, with a slight dip around lunchtime.
-- Lower order volume on Saturdays, potentially due to household activities and outdoor engagements.
+**Recommendations:**
+* Prioritise and prominently display these products when users first log in or visit the site.
+* Offer bundle deals or recommend related products to increase the average order value.
 
-**Item Quantity and Order Trends:**
-- For initial orders, users purchase an average of 10 products.
-- For re-orders within short intervals (less than 6 days), users buy 9 to 14 products.
-- For re-orders after longer intervals (7 days or more), users buy 15 to 30 products. 
+### Q.8: How often and when are products from different departments/aisles sold?
+**Order Frequency by Department**
+  * **Group 1: Top Departments (~46%):** Produce (30%) and dairy & eggs are the highest-priority departments, featuring bestsellers and frequently reordered items. 
+  * **Group 2: Major Departments (~30%):** Snacks, beverages, frozen, and pantry goods each account for 5% to 10% of all orders. 
+  * **Group 3: Small Departments (~20%):** Bakery, canned goods, deli, dry goods, pasta, household, meat & seafood, and breakfast represent 2% to 5% of orders each. 
+  * **Group 4: Niche Departments (~4%):** Personal care, baby products, international items, alcohol, and pet supplies each contribute less than 1.5% of total sales.
+  * Groups 1 and 2 generate ~76% of all sales and should be the primary focus for inventory and marketing efforts.
 
-**Re-ordering Frequency by Product Type:**
-- Fresh fruits are reordered more frequently than vegetables, likely due to shorter shelf life and versatile consumption options.
-- High-reordering frequency for yogurt, soy/lactose-free products, bread, refrigerated items, eggs, and cheese, but in smaller quantities.
-- Least likely to reorder: spices, seasonings, condiments, and baking ingredients.
+**Order Frequency by Aisle**
+* Produce and dairy & eggs are the largest, including fresh and packaged fruits and vegetables, herbs, yogurt, cheese, milk, soy lactose-free products, and eggs.
+* Popular Aisles in Small/Niche Departments: Bread (bakery), lunch meat (deli), baby food formula (babies), cereal (breakfast), and soup broth bouillon (canned goods). 
+* Pantry department is more fragmented with a broad range of infrequently purchased products, such as baking ingredients, spreads, oils & vinegars, and seasonings.
+
+**Timing of Orders**
+* **Time of Day Trends:** Convenience and quick meal items are purchased more in the morning, while alcoholic beverages dominate evening purchases. Other products show minor variations between morning and afternoon. 
+* **Day of Week Trends:**
+  * Fridays: Peak sales for alcoholic beverages. 
+  * Mondays: Surge in sales for fresh and pantry staples, household, and personal care products, as customers stock up for the week ahead.
+
+**Recommendations:**
+* Ensure top departments and popular aisles are well-stocked and prominently displayed to meet customer demand and enhance satisfaction.
+
 
 ## Recommendations
 - Prioritize displaying these essential products prominently when users log in or visit the site. 
