@@ -1,7 +1,8 @@
 # Unpacking Instacart: A Deep Dive into North American Grocery E-Commerce Behaviour
 ![Instacart mobile app screens](images/Instacart.png)
 
-**Instacart** is the leading grocery technology company in North America, partnering with more than 1,400 national, regional, and local retail banners to deliver from more than 80,000 stores across more than 14,000 cities in North America.
+**Instacart** is the leading grocery technology company in North America, partnering with more than 1,500 national, 
+regional, and local retail banners to deliver from more than 85,000 locations across more than 14,000 cities in the U.S. & Canada.
 
 ## Project Description
 The key objective of the project is to uncover patterns in the purchasing habits of Instacart shoppers and
@@ -138,11 +139,26 @@ N.B.: This notebook leverages data both from the SQL database and local `data/` 
 * Order volumes are stable from Tuesday to Friday between 9:00 and 16:00, with a slight lunchtime dip. 
 * Fewer orders on Saturday, possibly due to other activities like housekeeping or outdoor pursuits.
 
+**☑️ Proposed Actions:**
+* Ensure optimal stock level on Sundays and Mondays as the most popular days for shopping on the platform.
+* Develop targeted promotions for different customer segments. For example, promote healthy convenience items to busy professionals before lunchtime.
+
 ### Q.2: How many items do people buy?
 * Users bought over 33.8 million products on the platform.
   * NOTE: Data is available for 3,346,083 orders (97.8% of total), excluding 75,000 orders with missing content.
 * Average purchase is 8 products bought per order (median).
 * Typical orders contain 1 to 27 products, while outlier orders (3.3%) consist of 28 to 145 products.
+
+**☑️ Proposed Actions:**
+* Based on general industry trends, the average number of items in an order on online grocery shops can vary but typically ranges between 30 and 40 items per order.
+This indicates a growth opportunity from the current 8 items per purchase. Actions may include:
+  * Consider bundling and promotions like "Buy more, save more".
+  * Highlight complementary products during the checkout process and remind users of items they may need, based on past purchases.
+  * Create personalized shopping lists based on past purchases to remind customers of items they might need.
+  * Implement membership programs that provide benefits for purchasing in larger quantities (e.g. free delivery, exclusive discounts).
+  * Encourage customers to add more items to their cart by offering free shipping for orders above a certain value.
+  * Offer a free gift for orders exceeding a specific item count or value, encouraging customers to buy more.
+  * Provide recipe ideas and meal plans that require multiple items, and make it easy for customers to add all ingredients to their cart with a single click.
 
 ### Q.3: How many days pass before people place another order?
 * On average, people order groceries online approximately once a week. The same applies to Instacart users: they order again in 7 days (median).
@@ -168,7 +184,7 @@ indicating users are trying out the service or making smaller, essential purchas
 * The prominence of certain items like bananas, avocados, and spinach may be driven by advertising banners or product recommendations on the platform.
 
 ### Q.6: Which items are most frequently reordered?
-* The most frequently reordered items are **similar to the bestsellers list**, indicating that popular products are often reordered. 
+* The most frequently reordered items are, as logically expected, similar to the bestsellers list. 
   * Bananas top the chart for most frequently reordered items.
   * Other frequently reordered items include strawberries, avocados, and spinach, similar to their order in the bestsellers list. 
   * These products are likely considered essential or staple items for many Instacart shoppers.
@@ -178,8 +194,10 @@ indicating users are trying out the service or making smaller, essential purchas
 * Fresh fruits are reordered more frequently than vegetables, possibly due to shorter shelf life, versatile consumption forms, and taste preferences.
 * Items like spices, seasonings, condiments, and baking ingredients are less frequently reordered, likely because they are used in smaller quantities.
 
-### Q.7: Which items are added to the cart first, second, and third?
+**☑️ Proposed Actions:**
+* Ensure the consistent availability of top-selling and frequently reordered products to maintain customer satisfaction and a smooth supply chain. 
 
+### Q.7: Which items are added to the cart first, second, and third?
 The sequence of product additions shed light on how customers typically navigate the store.
 Shoppers tend to add these essentials first before moving on to other items.
 Based on the ordering sequence of bestsellers, three product groups can be distinguished:
@@ -194,9 +212,9 @@ Based on the ordering sequence of bestsellers, three product groups can be disti
   * Includes: Soda, reduced fat milk, Hass avocados, garlic, and honeycrisp apples.
 * Most products in these groups align closely with the most frequently reordered items.
 
-**Recommendations:**
+**☑️ Proposed Actions:**
 * Prioritise and prominently display these products when users first log in or visit the site.
-* Offer bundle deals or recommend related products to increase the average order value.
+* Offer bundle deals on top frequently reordered items (bananas, strawberries, spinach + with complementary products) to increase average order value.
 
 ### Q.8: How often and when are products from different departments/aisles sold?
 **Order Frequency by Department**
@@ -217,28 +235,10 @@ Based on the ordering sequence of bestsellers, three product groups can be disti
   * Fridays: Peak sales for alcoholic beverages. 
   * Mondays: Surge in sales for fresh and pantry staples, household, and personal care products, as customers stock up for the week ahead.
 
-**Recommendations:**
-* Ensure top departments and popular aisles are well-stocked and prominently displayed to meet customer demand and enhance satisfaction.
-
-
-## Recommendations
-- Prioritize displaying these essential products prominently when users log in or visit the site. 
-- Offer bundle deals and recommend related products to increase the average order value.
-
-#### Inventory management:
-  * Ensure the consistent availability of top-selling and frequently re-ordered products to maintain customer satisfaction and a smooth supply chain. 
-  * Ensure continuous availability and optimal stock levels for produce and dairy eggs, as these departments account for nearly 46% of orders. Regularly monitor inventory to prevent stockouts of high-demand items. 
-  * Prioritize restocking and expanding popular aisles within the produce and dairy eggs departments. Consider increasing the variety of fresh fruits, vegetables, and dairy products to meet customer demand.
-
-#### Enhance Product Visibility:
-  - Highlight products from top departments (produce and dairy eggs) on the homepage and in marketing campaigns to drive sales. Utilize advertising banners and product recommendations to promote these items.
-  - Create dedicated sections on the platform for popular aisles from smaller or niche departments (e.g., bakery, deli, breakfast) to increase their visibility and encourage purchases. 
-
-#### Targeted Marketing and Promotions:
-  * Offer bundle deals and discounts on frequently reordered items to increase average order value. For example, create bundles that include staple items like bananas, strawberries, and spinach with complementary products.
-  * Implement loyalty programs or subscription services for high-demand categories (e.g., produce and dairy) to encourage repeat purchases and improve customer retention. 
-  * Develop targeted marketing campaigns for different customer segments based on their purchasing behavior. For example, promote health-focused products to health-conscious customers and convenience items to busy professionals.
-
-#### Improve Pantry Department Offerings:
-  - Evaluate the extensive selection of pantry items and identify low-performing products. Focus on stocking high-demand items and consolidating less popular ones to streamline the inventory. 
-  - Provide detailed product descriptions, usage tips, and recipe ideas for pantry items to increase their appeal and drive sales. Highlight the versatility and benefits of these products to attract more customers.
+**☑️ Proposed Actions:**
+* Highlight products from top departments on the homepage and in marketing campaigns to drive sales.
+* Ensure top departments and popular aisles are well-stocked for Friday (wines & spirits) and Monday (fresh and pantry staples) peak sales.
+* Ensure continuous availability and optimal stock levels for produce and dairy, as these departments account for almost 50% of orders. 
+* Provide detailed product descriptions, usage tips, and recipe ideas for pantry items to increase their appeal and drive sales. 
+Highlight the versatility and benefits of these products to attract more customers.
+* Create dedicated sections on the platform for popular aisles from smaller or niche departments (e.g., bakery, deli, breakfast) to increase their visibility and encourage purchases.
